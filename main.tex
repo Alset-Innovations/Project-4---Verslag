@@ -16,21 +16,38 @@
 \usepackage{subcaption}
 \usepackage{comment}
 \usepackage{pdfpages}
+\usepackage[useregional]{datetime2}
+\usepackage{amsmath} % for the equation* environment
+\usepackage{float}
 \usepackage{pict2e}
+\usepackage{fixltx2e}
+\usepackage{tocloft}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{textgreek}
+\usepackage{colortbl}
 
-% \DeclareRobustCommand{\slashcirc}{{\mathpalette\doslashcirc\relax}}
+%%gmedina solution
+\newcommand{\listequationsname}{List of equations}
+\newlistof{myequations}{equ}{\listequationsname}
+\newcommand{\myequations}[1]{%
+\addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}\par}
+\setlength{\cftmyequationsnumwidth}{2.5em}% Width of equation number in List of Equations
 
-% \makeatletter
-% \newcommand\doslashcirc[2]{%
-%   \sbox\z@{$#1\m@th\circ$}%
-%   \setlength\unitlength{\wd\z@}
-%   \begin{picture}(1,1)
-%   \roundcap
-%   \put(0,0){\box\z@}
-%   \put(0,0){\line(1,1){1}}
-%   \end{picture}%
-% }
-% \makeatother
+\DeclareRobustCommand{\slashcirc}{{\mathpalette\doslashcirc\relax}}
+
+\makeatletter
+\newcommand\doslashcirc[2]{%
+  \sbox\z@{$#1\m@th\circ$}%
+  \setlength\unitlength{\wd\z@}
+  \begin{picture}(1,1)
+  \roundcap
+  \put(0,0){\box\z@}
+  \put(0,0){\line(1,1){1}}
+  \end{picture}%
+}
+\makeatother
 
 
 % %% Some packages you will need
@@ -38,7 +55,7 @@
 % \usepackage{pgfplotstable}
 % \usepackage{booktabs}
 % \usepackage{array}
-% \usepackage{colortbl}
+
 
 
 \definecolor{arduinoorange}{HTML}{FFA500}
@@ -115,7 +132,7 @@
 }
 \makeglossaries
 \definecolor{Grey1}{HTML}{343434}
-\graphicspath{{./Media/Figuren/}}
+\graphicspath{{./img}}
  \geometry{
  a4paper,
  total={170mm,257mm},
@@ -139,13 +156,7 @@
 \include{information/Glossary}
 \include{information/ListOfFigures}
 \include{main/TableOfContents}
-\include{chapters/The_Assignment}
-\include{chapters/Project_Activity}
-\include{chapters/Project_Boundaries}
-\include{chapters/Costs_and_revenues}
-\include{chapters/Organisation}
-\include{chapters/Planning}
-\include{chapters/Product}
-\include{chapters/Quality}
+\include{chapters/components/blackpill}
+\include{chapters/components/hal_sensor}
 \include{information/Sources}
 \end{document}
